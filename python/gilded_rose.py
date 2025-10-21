@@ -38,10 +38,13 @@ class GildedRose(object):
                     if item.name != "Backstage passes to a TAFKAL80ETC concert":
                         if item.quality > 0:
                             if item.name != "Sulfuras, Hand of Ragnaros":
-                                item.quality = item.quality - 1
+                                self.decrease_quality(item)
                     else:
                         item.quality = item.quality - item.quality
                 else:
                     if item.quality < 50:
                         item.quality = item.quality + 1
 
+    def decrease_quality(self, item, amount=1):
+        if item.name != "Sulfuras, Hand of Ragnaros" and item.quality > 0:
+            item.quality -= amount
